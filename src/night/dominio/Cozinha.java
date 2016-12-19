@@ -17,7 +17,7 @@ public class Cozinha extends Dominio {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = ItemCozinha.class)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = ItemCozinha.class)
 	private List<ItemCozinha> itemCozinha;
 
 	public List<ItemCozinha> getItemCozinha() {

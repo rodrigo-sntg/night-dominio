@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Access(AccessType.FIELD)
 public class ItemEstoque extends Item {
@@ -45,10 +48,12 @@ public class ItemEstoque extends Item {
 
 	
 //	@JoinTable(name = "EST_ENT", joinColumns = { @JoinColumn(name = "ITE_EST_ID") }, inverseJoinColumns = { @JoinColumn(name = "ENT_ID") })
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private List<Entrada> historicoPrecosCompra;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@Fetch(FetchMode.SELECT)
 	@JoinColumn(name = "MEDIDA_ID")
 	private Medida medida;
 

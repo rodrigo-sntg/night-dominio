@@ -29,7 +29,7 @@ public class Endereco extends Dominio {
 	@Column(name = "ESTADO") 
 	private String estado;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn
 	private Pessoa entidade;
 	

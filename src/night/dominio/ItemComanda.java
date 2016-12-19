@@ -5,6 +5,7 @@ import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,7 +20,7 @@ public class ItemComanda extends Dominio {
 	@Column
 	private int quantidade;
 	
-	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private ItemConsumo item;
 	
 	

@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,10 +18,10 @@ public class ItemEstoqueConsumo extends Dominio {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL , fetch = FetchType.EAGER)
 	private Medida medida;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL , fetch = FetchType.EAGER)
 	private ItemEstoque itemEstoque;
 	
 

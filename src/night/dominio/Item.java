@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
@@ -28,7 +29,7 @@ public class Item extends Dominio  {
 	@Column(name = "DESCRICAO") 
 	protected String descricao;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	protected SubCategoria subCategoria;;
 
 	public String getNomeItem() {

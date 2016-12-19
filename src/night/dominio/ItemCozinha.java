@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -27,7 +28,7 @@ public class ItemCozinha extends Dominio {
 	@Column(name="STATUS")
 	private int status;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ITE_ID")
 	private ItemConsumo itemConsumo;
 

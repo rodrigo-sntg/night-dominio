@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,7 +17,7 @@ public class SubCategoria extends Categoria {
 	private static final long serialVersionUID = 1L;
 	
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private CategoriaPrincipal categoria;
 
 	public SubCategoria(CategoriaPrincipal categoria) {

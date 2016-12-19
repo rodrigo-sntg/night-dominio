@@ -44,7 +44,7 @@ public class Pessoa extends Dominio implements Serializable {
 	@Column(name="DATA_NASCIMENTO") 
 	private Date dtNascimento;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="END_ID")
 	protected Endereco endereco;
 	

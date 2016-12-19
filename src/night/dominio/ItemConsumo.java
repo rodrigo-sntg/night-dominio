@@ -43,7 +43,7 @@ public class ItemConsumo extends Item {
 
 	
 //	@JoinTable(name = "ITE_EST_CON", joinColumns = { @JoinColumn(name = "ITE_CON_ID") }, inverseJoinColumns = { @JoinColumn(name = "ITE_EST_ID") })
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private List<ItemEstoqueConsumo> listaItemEstoqueConsumo;
 	
 	

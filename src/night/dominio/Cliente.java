@@ -10,10 +10,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 @Entity 
@@ -30,8 +33,10 @@ public class Cliente extends Pessoa {
 	private boolean ativo;
 
 	
+	
 //    @JoinTable(name = "COMANDA", joinColumns = { @JoinColumn(name = "CLI_ID") }, inverseJoinColumns = { @JoinColumn(name = "COM_ID") })
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Comanda.class)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comanda.class)
+	@Fetch(value = FetchMode.SELECT)
 	private List<Comanda> comandas;
 	
 	public Cliente(){

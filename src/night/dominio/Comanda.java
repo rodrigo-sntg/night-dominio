@@ -15,7 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType; 
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode; 
 
 
 @Entity
@@ -53,7 +56,8 @@ public class Comanda extends Dominio{
 //	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = ItemConsumo.class)
 //	private List<ItemConsumo> listaItemConsumo;
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = ItemComanda.class)
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = ItemComanda.class)
 	private List<ItemComanda> listaItemComanda;
 	
 	
@@ -61,7 +65,8 @@ public class Comanda extends Dominio{
 	@JoinColumn(name="CLI_ID")
 	private Cliente cliente;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="comanda", targetEntity = Pagamento.class)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="comanda", targetEntity = Pagamento.class)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Pagamento> pagamento;
 
 	

@@ -8,6 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Access(AccessType.FIELD)
 public class Pagamento extends Dominio{
@@ -51,7 +54,9 @@ public class Pagamento extends Dominio{
 	@Column(name = "VALOR") 
 	private double valor;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@Fetch(FetchMode.SELECT)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "COM_ID", nullable = false, columnDefinition="BIGINT(20)")
 	private Comanda comanda;
 
